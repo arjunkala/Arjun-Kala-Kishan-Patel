@@ -1,0 +1,3 @@
+Arjun
+
+I was responsible for data acquisition and integration. I located and downloaded both final datasets from the USDA ERS and FBI UCR portals and verified their integrity. I then wrote the merging logic in clean_and_merge.py, handling the FIPS-based filtering for state-level records and the inner join on State + Year. I also conducted the preliminary correlation analysis and drafted Sections 1, 4.3, and 4.5 of this status report.
