@@ -1,0 +1,36 @@
+rule all:
+    input:
+        "results/figures/violent_crime_scatter.png",
+        "results/figures/property_crime_scatter.png",
+        "results/figures/yearly_trends.png",
+        "results/figures/state_violent_crime_rankings.png",
+        "results/correlation_results.csv",
+        "results/regression_results.csv",
+        "results/descriptive_statistics.csv",
+        "results/state_violent_crime_rankings.csv"
+
+rule clean_and_merge:
+    input:
+        crime = "data/raw/state_crime.csv",
+        unemp = "data/raw/Unemployment2023.csv"
+    output:
+        "data/processed/crime_clean.csv",
+        "data/processed/unemployment_clean.csv",
+        "data/processed/merged_crime_unemployment.csv"
+    shell:
+        "python clean_and_merge.py"
+
+rule analyze:
+    input:
+        "data/processed/merged_crime_unemployment.csv"
+    output:
+        "results/figures/violent_crime_scatter.png",
+        "results/figures/property_crime_scatter.png",
+        "results/figures/yearly_trends.png",
+        "results/figures/state_violent_crime_rankings.png",
+        "results/correlation_results.csv",
+        "results/regression_results.csv",
+        "results/descriptive_statistics.csv",
+        "results/state_violent_crime_rankings.csv"
+    shell:
+        "python analyze.py"
